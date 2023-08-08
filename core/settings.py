@@ -78,12 +78,12 @@ MIDDLEWARE = [
     "userextensions.middleware.UserRecentsMiddleware",
 ]
 
-ROOT_URLCONF = "{{ project_name }}.urls"
+ROOT_URLCONF = "core.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "{{ project_name }}", "templates")],
+        "DIRS": [os.path.join(BASE_DIR, "core", "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -97,7 +97,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "{{ project_name }}.wsgi.application"
+WSGI_APPLICATION = "core.wsgi.application"
 
 
 # Database
@@ -108,8 +108,8 @@ DATABASES = {
         "ENGINE": env.str("DB_ENGINE", "django.db.backends.sqlite3"),
         "NAME": env.str("DB_NAME", os.path.join(BASE_DIR, "db.sqlite3")),
         "TEST_NAME": env.str("DB_TEST_NAME", os.path.join(BASE_DIR, "db.sqlite3")),
-        "USER": env.str("DB_USER", "{{ project_name }}"),
-        "PASSWORD": env.str("DB_PASSWORD", "{{ project_name }}"),
+        "USER": env.str("DB_USER", "core"),
+        "PASSWORD": env.str("DB_PASSWORD", "core"),
         "HOST": env.str("DB_HOST", "localhost"),
         "PORT": env.str("DB_PORT", "5432"),
     }
@@ -154,7 +154,7 @@ STATIC_ROOT = os.path.join(str(BASE_DIR), "staticroot")
 STATIC_URL = "/static/"
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = (os.path.join(str(BASE_DIR), "{{ project_name }}/static"),)
+STATICFILES_DIRS = (os.path.join(str(BASE_DIR), "core/static"),)
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
@@ -181,8 +181,6 @@ REQUIRED_LOGIN_IGNORE_PATHS = [
     "/admin/",
     "/admin/login/",
 ]
-PROJECT_NAME = "{{ project_name }}"
-PROJECT_VERSION = env.str("PROJECT_VERSION", "0.0.1")
 
 
 # logging configuration
@@ -271,3 +269,10 @@ SPECTACULAR_SETTINGS = {
     "DESCRIPTION": "RESTful APIs for {{ project_name }}",
     "VERSION": "1.0.0",
 }
+
+PROJECT_NAME = "{{ project_name }}"
+PROJECT_DESCRIPTION = """ """
+PROJECT_VERSION = env.str("PROJECT_VERSION", "0.0.1")
+PROJECT_SOURCE = ""
+
+PYGWALKER_THEME = "light"

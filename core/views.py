@@ -14,7 +14,7 @@ class RegisterUser(generic.CreateView):
 
 class Index(HandyHelperIndexView):
     """render the project index page"""
-    title = """Welcome to <span class="text-primary">{{ project_name }}</span><span class="text-secondary"></span>!"""
+    title = """Welcome to <span class="text-primary">Home</span><span class="text-secondary"></span>!"""
     subtitle = "Select an option below to get started"
     item_list = [
 

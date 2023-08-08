@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.contrib.auth.views import logout_then_login
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
-from {{ project_name }} import views
+from core import views
 
 
 urlpatterns = [

@@ -96,8 +96,8 @@
 
                     {% if user.is_authenticated %}
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown align-right mx-2">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item dropdown align-end mx-2">
+                            <a class="nav-link" href="#" hx-get="{% url 'handyhelpers:about' %}" hx-target="#modal_wrapper">
                                 <b class="fa fa-info-circle fw"></b>
                             </a>
                         </li>
@@ -135,7 +135,9 @@
 
             {# block to contain main page content #}
             {% block content %} Default Content - Local page should overwrite this {% endblock content %}
-            {% block modals %} {% endblock modals %}
+            {% block modals %}
+            {% include 'handyhelpers/htmx/bs5/generic_modal.htm' %}
+            {% endblock modals %}
         </section>
 
         {% block mainfooter %}
