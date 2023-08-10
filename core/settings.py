@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "handyhelpers",
     "userextensions",
     "djangoaddicts.hostutils",
+    "djangoaddicts.pygwalker",
     "rest_framework",
     "rest_framework.authtoken",
     "rest_framework_filters",
@@ -271,8 +272,8 @@ SPECTACULAR_SETTINGS = {
 }
 
 PROJECT_NAME = "{{ project_name }}"
-PROJECT_DESCRIPTION = """ """
+PROJECT_DESCRIPTION = """{{ project_name }} is a super awesome project powered, in part, by amazing code provided by DjangoAddicts."""
 PROJECT_VERSION = env.str("PROJECT_VERSION", "0.0.1")
-PROJECT_SOURCE = ""
+PROJECT_SOURCE = "https://github.com/djangoaddicts"
 
 PYGWALKER_THEME = "light"
