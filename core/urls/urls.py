@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path, include
 from django.contrib.auth.views import logout_then_login
+from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 from core import views
@@ -42,6 +42,7 @@ urlpatterns = [
 
     # URLs to local apps
     path("", views.Index.as_view(), name="index"),
+    path("dashboard", views.ProjectDashboard.as_view(), name="dashboard"),
 ]
 
 if settings.DEBUG:
