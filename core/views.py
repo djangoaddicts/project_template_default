@@ -20,6 +20,12 @@ class Index(HandyHelperIndexView):
     subtitle = "Select an option below to get started"
     item_list = [
         {
+            "url": "/dashboard",
+            "icon": "fas fa-tachometer-alt",
+            "title": "Dashboard",
+            "description": "View {{ project_name }} dashboard",
+        },
+        {
             "url": "/rest",
             "icon": "fas fa-download",
             "title": "APIs",

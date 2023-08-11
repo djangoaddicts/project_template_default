@@ -181,6 +181,10 @@ REQUIRED_LOGIN_IGNORE_PATHS = [
     "/logout",
     "/admin/",
     "/admin/login/",
+    "/handyhelpers/live",
+    "/handyhelpers/ready",
+    "/handyhelpers/starttime",
+    "/handyhelpers/uptime",
 ]
 
 
