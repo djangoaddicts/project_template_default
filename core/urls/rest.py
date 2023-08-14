@@ -4,13 +4,13 @@ from rest_framework import routers
 
 app_name = 'rest'
 
-router = routers.DefaultRouter()
+v1_router = routers.DefaultRouter()
 
 
 urlpatterns = [
 
     # API views
-    path('', include(router.urls)),
-    path('v1/', include(router.urls)),
+    path('', include(v1_router.urls)),
+    path('v1/', include(v1_router.urls)),
 
 ]
