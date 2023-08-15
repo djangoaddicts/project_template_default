@@ -15,27 +15,35 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path, include
 from django.contrib.auth.views import logout_then_login
+from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
-from {{ project_name }} import views
+from core import views
 
 
 urlpatterns = [
+    # Django provided URLs
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
     path("logout/", logout_then_login, name="logout"),
+    
+    # 3rd party URLs
     path("userextensions/", include("userextensions.urls")),
     path("handyhelpers/", include("handyhelpers.urls")),
     path("hostutils/", include("djangoaddicts.hostutils.urls")),
-    # API documentation
-    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
-    path("api/swagger/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger"),
-    path("api/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
+    path("pygwalker/", include("djangoaddicts.pygwalker.urls")),
+    
+    # RESTful API URLs
+    path("rest/", include("core.urls.rest", namespace="rest")),
+    path("rest/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("rest/swagger/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger"),
+    path("rest/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
 
-    # local apps
+    # URLs to local apps
     path("", views.Index.as_view(), name="index"),
+    path("dashboard/", views.ProjectDashboard.as_view(), name="dashboard"),
+    # path("app1/", include("app1.urls", namespace="app1")),
 ]
 
 if settings.DEBUG:

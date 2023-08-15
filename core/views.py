@@ -1,10 +1,11 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views import generic
+from django.views.generic import CreateView, View
 from handyhelpers.views import HandyHelperIndexView
 
 
-class RegisterUser(generic.CreateView):
+class RegisterUser(CreateView):
     """add a new user"""
 
     form_class = UserCreationForm
@@ -14,10 +15,22 @@ class RegisterUser(generic.CreateView):
 
 class Index(HandyHelperIndexView):
     """render the project index page"""
+
     title = """Welcome to <span class="text-primary">{{ project_name }}</span><span class="text-secondary"></span>!"""
     subtitle = "Select an option below to get started"
     item_list = [
-
+        {
+            "url": "/dashboard",
+            "icon": "fas fa-tachometer-alt",
+            "title": "Dashboard",
+            "description": "View {{ project_name }} dashboard",
+        },
+        {
+            "url": "/rest",
+            "icon": "fas fa-download",
+            "title": "APIs",
+            "description": "List available RESTful APIs",
+        },
     ]
     protected_item_list = [
         {
@@ -28,3 +41,14 @@ class Index(HandyHelperIndexView):
         },
     ]
     protected_group_name = "admin"
+
+
+class ProjectDashboard(View):
+    """project-level dashboard"""
+
+    template_name = "core/custom/dashboard.html"
+
+    def get(self, request):
+        """ """
+        context = {}
+        return render(request, self.template_name, context=context)
