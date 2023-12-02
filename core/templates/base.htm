@@ -95,7 +95,12 @@
                     {% if user.is_authenticated %}
                     <ul class="navbar-nav me-4">
                         <li class="nav-item dropdown align-end mx-2">
-                            <a class="nav-link" href="#" hx-get="{% url 'handyhelpers:about' %}" hx-target="#modal_wrapper">
+                            <a class="nav-link" href="#" 
+                            hx-get="{% url 'handyhelpers:about' %}" 
+                            hx-target="#modal_wrapper"
+                            data-bs-toggle="modal"
+                            data-bs-target="#modal_wrapper"
+                            >
                                 <b class="fa fa-info-circle fw"></b>
                             </a>
                         </li>
