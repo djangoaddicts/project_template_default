@@ -22,7 +22,7 @@ A reusable template for making django projects
     
     ```mv <my_project_name> django_project```
 
-6. use the following command to create a django app based on the django app template:
+6. cd into django_project and use the following command to create a django app based on the django app template:
 
     ```./manage.py startapp my_app --template https://github.com/djangoaddicts/app_template_default/archive/refs/heads/main.zip --extension htm```
 
